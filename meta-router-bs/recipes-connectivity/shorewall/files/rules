@@ -12,3 +12,5 @@
 #SECTION ESTABLISHED
 #SECTION RELATED
 SECTION NEW
+ACCEPT		all				all			icmp
+ACCEPT		inet			$FW			tcp		22

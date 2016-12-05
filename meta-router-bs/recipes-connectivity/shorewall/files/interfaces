@@ -8,3 +8,5 @@
 #
 ###############################################################################
 #ZONE	INTERFACE	BROADCAST	OPTIONS
+net		eth1			detect		norfc1918,nosmurfs,logmartians
+loc		eth0			detect		dhcp,routeback

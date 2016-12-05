@@ -10,3 +10,5 @@
 #ZONE	TYPE		OPTIONS		IN			OUT
 #					OPTIONS			OPTIONS
 fw	firewall
+loc	ipv4
+net	ipv4
