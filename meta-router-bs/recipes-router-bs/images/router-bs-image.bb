@@ -58,14 +58,13 @@ ROUTER_NET = "kernel-module-asix \
 # приложения входящие в образ
 ROUTER_SOFT = " \
         mc \
-        iptables \
         resolvconf \
-        dhcp \
         dhcp-server \
-        dhcp-client \
         init-ifupdown \
+        shorewall \
         "
 
+# dhcp-client
 
 # указание всех дополнительных пакетов которые будут присутствовать в дистрибутиве "Router-bs"
 # Include modules in rootfs
