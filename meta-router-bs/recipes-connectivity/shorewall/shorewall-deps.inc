@@ -17,4 +17,5 @@ RDEPENDS_${PN} += "\
     perl-module-exporter-heavy \
     perl-module-list-util \
     perl-module-socket \
+    perl-module-overloading \
 "
