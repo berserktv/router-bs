@@ -3,13 +3,22 @@ LIC_F = "file://${COREBASE}/meta/files/common-licenses/GPL-1.0"
 SUM_F = "md5=e9e36a9de734199567a4d769498f743d"
 LIC_FILES_CHKSUM = "${LIC_F};${SUM_F}"
 
+SUB_PR = ".3"
 require shorewall.inc
 # this version (4.4) requires some deps (perl)
 require shorewall-deps.inc
 
+
+# запуск стартового скрипта /etc/init.d/shorewall на определенном уровне исполнения
+# последовательность запуска, перед сервисом ssh и dhcp
+inherit update-rc.d
+INITSCRIPT_NAME = "shorewall"
+INITSCRIPT_PARAMS = "start 08 2 3 4 5 . stop 92 0 6 1 ."
+
+
 PR = "${INC_PR}.0"
 SRC_URI = "\
-    http://www.shorewall.net/pub/shorewall/4.4/shorewall-${PV}/${PN}-${PV}.tar.bz2 \
+    http://www.shorewall.net/pub/shorewall/4.4/shorewall-${PV}/${PN}-${PV}${SUB_PR}.tar.bz2 \
     file://zones \
     file://interfaces \
     file://policy \
@@ -22,8 +31,8 @@ SRC_URI = "\
 # и не требует компиляции
 do_compile[noexec] = "1"
 
-SRC_URI[md5sum] = "9f8705d69d42eb949e352af72c3af8bb"
-SRC_URI[sha256sum] = "af097fc18c0d5a3b562812814107b627bfd3d802e3b5fe45fec4e53a4e84f17c"
+SRC_URI[md5sum] = "9f0ef6b547526aa33e34941a211ca602"
+SRC_URI[sha256sum] = "1f95a04af2cbdd3449aa6fb26ea1b001e7cccd1ad4ed6d7ed8648247ae5d09bb"
 
 
 do_install_append () {

@@ -28,7 +28,7 @@ RRECOMMENDS_${PN} = "kernel-module-ip-tables \
 
 do_install() {
 	export PREFIX=${D}
-	${WORKDIR}/${PN}-${PV}/install.sh
+	${WORKDIR}/${PN}-${PV}${SUB_PR}/install.sh
 }
 
 FILES_${PN} += "/usr/share/shorewall/*"
