@@ -8,6 +8,7 @@ require shorewall.inc
 # this version (4.4) requires some deps (perl)
 require shorewall-deps.inc
 
+S = "${WORKDIR}/${PN}-${PV}${SUB_PR}"
 
 # запуск стартового скрипта /etc/init.d/shorewall на определенном уровне исполнения
 # последовательность запуска, перед сервисом ssh и dhcp
@@ -42,4 +43,8 @@ do_install_append () {
     install -m 0644 ${WORKDIR}/masq ${D}${sysconfdir}/shorewall/masq
     install -m 0644 ${WORKDIR}/rules ${D}${sysconfdir}/shorewall/rules
     install -m 0644 ${WORKDIR}/shorewall.conf ${D}${sysconfdir}/shorewall/shorewall.conf
+
+    # дополнительно устанавливаю примеры конфигураций брандмауэра
+    install -d ${D}${docdir}/shorewall/examples
+    cp -R ${S}/Samples/* ${D}${docdir}/shorewall/examples/
 }
