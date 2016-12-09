@@ -66,9 +66,9 @@ ROUTER_SOFT = " \
         dhcp-server \
         init-ifupdown \
         shorewall \
+        shorewall-doc \
         "
 
-# dhcp-client
 
 # указание всех дополнительных пакетов которые будут присутствовать в дистрибутиве "Router-bs"
 # Include modules in rootfs
