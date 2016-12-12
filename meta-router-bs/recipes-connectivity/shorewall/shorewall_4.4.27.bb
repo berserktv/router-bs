@@ -25,6 +25,7 @@ SRC_URI = "\
     file://policy \
     file://masq \
     file://rules \
+    file://routestopped \
     file://shorewall.conf \
     "
 
@@ -42,6 +43,7 @@ do_install_append () {
     install -m 0644 ${WORKDIR}/policy ${D}${sysconfdir}/shorewall/policy
     install -m 0644 ${WORKDIR}/masq ${D}${sysconfdir}/shorewall/masq
     install -m 0644 ${WORKDIR}/rules ${D}${sysconfdir}/shorewall/rules
+    install -m 0644 ${WORKDIR}/routestopped ${D}${sysconfdir}/shorewall/routestopped
     install -m 0644 ${WORKDIR}/shorewall.conf ${D}${sysconfdir}/shorewall/shorewall.conf
 
     # дополнительно устанавливаю примеры конфигураций брандмауэра
