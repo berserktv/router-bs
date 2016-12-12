@@ -1,5 +1,5 @@
 #
-# Shorewall version 4.0 - Sample Masq file for two-interface configuration.
+# Shorewall version 4.0 - Sample Routestopped File for two-interface configuration.
 # Copyright (C) 2006 by the Shorewall Team
 #
 # This library is free software; you can redistribute it and/or
@@ -9,7 +9,7 @@
 #
 # See the file README.txt for further details.
 #------------------------------------------------------------------------------
-# For information about entries in this file, type "man shorewall-masq"
-###############################################################################
-#INTERFACE		SOURCE		ADDRESS		PROTO	PORT(S)	IPSEC	MARK
-eth0			eth1
+# For information about entries in this file, type "man shorewall-routestopped"
+##############################################################################
+#INTERFACE	HOST(S)                  OPTIONS
+eth1		-
