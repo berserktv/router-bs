@@ -1,4 +1,4 @@
-# Минималистический дистрибутив Linux, выполняющий функции "Маршрутизатора" для платформы Raspberry PI собранный в "Yocto Project", autor Alexander Demachev, site berserk.tech
+# Минималистический дистрибутив Linux, выполняющий функции "Маршрутизатора" для платформы Raspberry PI собранный в "Yocto Project", autor Alexander Demachev, site berserk.top
 DESCRIPTION = "The Router BS -  is a simple image to Raspberry PI platform"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690 \
