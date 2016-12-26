@@ -1,8 +1,13 @@
-# Минималистический дистрибутив Linux, выполняющий функции "Маршрутизатора" для платформы Raspberry PI собранный в "Yocto Project", autor Alexander Demachev, site berserk.top
+# Минималистический дистрибутив Linux, выполняющий функции "Маршрутизатора"
+# для платформы Raspberry PI собранный в "Yocto Project",
+# autor Alexander Demachev, site berserk.top
 DESCRIPTION = "The Router BS -  is a simple image to Raspberry PI platform"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690 \
-                    file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
+MD5_LIC = "md5=4d92cd373abda3937c2bc47fbc49d690"
+MD5_MIT = "md5=3da9cfbcb788c80a0384361b4de20420"
+
+LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;${MD5_LIC} \
+                    file://${COREBASE}/meta/COPYING.MIT;${MD5_MIT}"
 
 # добавление нескольких стандартных пакетов в базовый образ
 IMAGE_FEATURES += "ssh-server-openssh splash"
@@ -11,14 +16,16 @@ IMAGE_FEATURES += "ssh-server-openssh splash"
 # Base this image on core-image-minimal
 include recipes-core/images/core-image-minimal.bb
 
-# Установка пароля по умолчанию для пользователя "root"  - основная административная учетная запись в системе
+# Установка пароля по умолчанию для пользователя "root"
+# - основная административная учетная запись в системе
 # Set default password for 'root' user
 inherit extrausers
 ROOTUSERNAME = "root"
 ROOTPASSWORD = "routerbs"
 EXTRA_USERS_PARAMS = "usermod -P ${ROOTPASSWORD} ${ROOTUSERNAME};"
 
-# стартовая заставка, которая выводиться во время загрузки, в случае подключения кабеля HDMI к монитору или к телевизору
+# стартовая заставка, которая выводиться во время загрузки,
+# в случае подключения кабеля HDMI к монитору или к телевизору
 SPLASH = "psplash-raspberrypi"
 
 # увеличиваю количество виртуальных консолей до 3
@@ -32,7 +39,8 @@ SYSVINIT_ENABLED_GETTYS = "1 2 3"
 # отладочные пакеты
 # ROUTER_DEBUG_TOOLS = "ldd strace ltrace"
 
-# пакеты библиотеки libc входящие в образ, локализация, символьные таблицы для различных языков и т.п.
+# пакеты библиотеки libc входящие в образ, локализация,
+# символьные таблицы для различных языков и т.п.
 ROUTER_GLIBC = " \
             glibc-thread-db \
             glibc-gconv-utf-16 \
@@ -70,7 +78,7 @@ ROUTER_SOFT = " \
         "
 
 
-# указание всех дополнительных пакетов которые будут присутствовать в дистрибутиве "Router-bs"
+# указание всех дополнительных пакетов дистрибутива "Router-bs"
 # Include modules in rootfs
 IMAGE_INSTALL += " \
     ${ROUTER_BASE} \
