@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # скрипт предназначен для загрузки среды сборки дистрибутива "Router-bs" для
-# одноплатного компьютера "Raspberry Pi", autor "Alexander Demachev", site berserk.top
+# одноплатного компьютера "Raspberry Pi", autor "Alexander Demachev", site berserk.tv
 #
 # система сборки "poky" устанавливается в каталог выше
 # скрипт должен запускаться под обычным пользователем,
