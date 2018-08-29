@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # скрипт предназначен для загрузки среды сборки дистрибутива "Router-bs" для
-# одноплатного компьютера "Raspberry Pi", autor "Alexander Demachev", site berserk.tv
+# одноплатного компьютера "Raspberry Pi", autor "Alexander Demachev", site https://berserk.tv
 #
 # система сборки "poky" устанавливается в каталог выше
 # скрипт должен запускаться под обычным пользователем,
@@ -23,15 +23,15 @@ LOCAL_CONFIG="build/conf/local.conf"
 CONFIG_MACHINE="raspberrypi2"
 TYPE_PACKAGE="deb"
 
-# версия "yocto-project" выбраная в качестве базовой, ветка krogoth от 11 октября 2016
+# версия "yocto-project" выбраная в качестве базовой, ветка sumo от 13 августа 2018
 GIT_YOCTO="git://git.yoctoproject.org/poky.git"
-REV_YOCTO="40f4a6d075236265086cc79400dea3c14720383a"
+REV_YOCTO="45ef387cc54a0584807e05a952e1e4681ec4c664"
 
 
 DIR_RASPBERRYPI="meta-raspberrypi"
 GIT_RASPBERRYPI="http://git.yoctoproject.org/cgit/cgit.cgi/$DIR_RASPBERRYPI"
-# перешел на ветку krogoth от 16 сентября 2016
-REV_RASPBERRYPI="a5f9b07a820d50ae5fb62e07306cd4e72d8638a9"
+# перешел на ветку sumo от 20 июля 2018
+REV_RASPBERRYPI="05f21adb99f97140e874fa2a4ed66d5e3554cd33"
 
 
 
