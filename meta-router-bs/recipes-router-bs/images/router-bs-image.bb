@@ -1,13 +1,12 @@
 # Минималистический дистрибутив Linux, выполняющий функции "Маршрутизатора"
 # для платформы Raspberry PI собранный в "Yocto Project",
-# autor Alexander Demachev, site berserk.tv
+# autor Alexander Demachev, site https://berserk.tv
 DESCRIPTION = "The Router BS -  is a simple image to Raspberry PI platform"
 LICENSE = "MIT"
-MD5_LIC = "md5=4d92cd373abda3937c2bc47fbc49d690"
-MD5_MIT = "md5=3da9cfbcb788c80a0384361b4de20420"
+MD5_MIT = "md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;${MD5_LIC} \
-                    file://${COREBASE}/meta/COPYING.MIT;${MD5_MIT}"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;${MD5_MIT}"
+
 
 # добавление нескольких стандартных пакетов в базовый образ
 IMAGE_FEATURES += "ssh-server-openssh splash"
@@ -26,10 +25,8 @@ EXTRA_USERS_PARAMS = "usermod -P ${ROOTPASSWORD} ${ROOTUSERNAME};"
 
 # стартовая заставка, которая выводиться во время загрузки,
 # в случае подключения кабеля HDMI к монитору или к телевизору
-SPLASH = "psplash-raspberrypi"
+###SPLASH = "psplash-raspberrypi"
 
-# увеличиваю количество виртуальных консолей до 3
-SYSVINIT_ENABLED_GETTYS = "1 2 3"
 
 
 ###########################################################################
