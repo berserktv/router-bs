@@ -67,6 +67,7 @@ ROUTER_NET = "kernel-module-asix \
 # приложения входящие в образ
 ROUTER_SOFT = " \
         mc \
+        ntp \
         resolvconf \
         dhcp-server \
         init-ifupdown \
