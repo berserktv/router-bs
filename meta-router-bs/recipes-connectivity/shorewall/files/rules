@@ -43,3 +43,8 @@ Ping(DROP)	net		$FW
 ACCEPT		$FW		loc		icmp
 ACCEPT		$FW		net		icmp
 #
+
+### router-bs 
+# Accept NTP connections
+NTP(ACCEPT)	loc		$FW
+NTP(ACCEPT)	$FW		net
