@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # скрипт предназначен для загрузки среды сборки дистрибутива "Router-bs" для
-# одноплатного компьютера "Orange Pi Zero", autor "Alexander Demachev", site https://berserk.tv
+# одноплатного компьютера "Raspberry Pi", autor "Alexander Demachev", site https://berserk.tv
+# license -  The MIT License (MIT)
 #
 # система сборки "poky" устанавливается в каталог выше
 # скрипт должен запускаться под обычным пользователем,
@@ -20,18 +21,18 @@ META_ROUTER="meta-router-bs"
 
 BBLAYERS_CONFIG="build/conf/bblayers.conf"
 LOCAL_CONFIG="build/conf/local.conf"
-CONFIG_MACHINE="orange-pi-zero"
+CONFIG_MACHINE="raspberrypi2"
 TYPE_PACKAGE="deb"
 
-# версия "yocto-project" выбраная в качестве базовой, ветка sumo от 13 августа 2018
+# версия "yocto-project" выбраная в качестве базовой, ветка sumo от 5 сентября 2018
 GIT_YOCTO="git://git.yoctoproject.org/poky.git"
-REV_YOCTO="45ef387cc54a0584807e05a952e1e4681ec4c664"
+REV_YOCTO="51872d3f99e38f9d883ab0a8782ceecb41822fd0"
 
 
-DIR_ORANGEPI="meta-sunxi"
-GIT_ORANGEPI="https://github.com/linux-sunxi/$DIR_ORANGEPI"
-# перешел на ветку sumo от 10 июня 2018
-REV_ORANGEPI="df468d72d74b6af224060b78e4d5daf66c536cb6"
+DIR_RASPBERRYPI="meta-raspberrypi"
+GIT_RASPBERRYPI="http://git.yoctoproject.org/cgit/cgit.cgi/$DIR_RASPBERRYPI"
+# перешел на ветку sumo от 20 июля 2018
+REV_RASPBERRYPI="05f21adb99f97140e874fa2a4ed66d5e3554cd33"
 
 
 
@@ -65,7 +66,7 @@ get_git_project "$GIT_YOCTO" "$REV_YOCTO" "$SYSTEM_BUILD"
 
 cd $SYSTEM_BUILD
 poky_dir=`pwd`
-get_git_project "$GIT_ORANGEPI" "$REV_ORANGEPI" "$DIR_ORANGEPI"
+get_git_project "$GIT_RASPBERRYPI" "$REV_RASPBERRYPI" "$DIR_RASPBERRYPI"
 
 
 #####################################################################
@@ -81,14 +82,10 @@ ln -v -s $old_dir/$META_ROUTER $META_ROUTER
 # добавление собственного слоя в список слоев BBLAYERS
 # и добавление слоя сборки для "Raspberry Pi"
 sed -i "s|meta-yocto-bsp.*|&\n  $poky_dir/$META_ROUTER \\\|g" $BBLAYERS_CONFIG
-sed -i "s|meta-yocto-bsp.*|&\n  $poky_dir/$DIR_ORANGEPI \\\|g" $BBLAYERS_CONFIG
+sed -i "s|meta-yocto-bsp.*|&\n  $poky_dir/$DIR_RASPBERRYPI \\\|g" $BBLAYERS_CONFIG
 sed -i "s|MACHINE ??=.*|MACHINE ??= \"$CONFIG_MACHINE\"|" $LOCAL_CONFIG
 
 # тип бинарных пакетов для установки ПО 
 F="PACKAGE_CLASSES ?= \"package_rpm\""
 R="PACKAGE_CLASSES ?= \"package_$TYPE_PACKAGE\""
 sed -i "s|$F|$R|" $LOCAL_CONFIG
-
-# разрешаем использовать коммерческую лицензию для возможности сборки
-# некоторых библиотек, например libdav"
-echo "LICENSE_FLAGS_WHITELIST = \"commercial\"" >> $LOCAL_CONFIG
