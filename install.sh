@@ -2,6 +2,7 @@
 
 # скрипт предназначен для загрузки среды сборки дистрибутива "Router-bs" для
 # одноплатного компьютера "Orange Pi Zero", autor "Alexander Demachev", site https://berserk.tv
+# license -  The MIT License (MIT)
 #
 # система сборки "poky" устанавливается в каталог выше
 # скрипт должен запускаться под обычным пользователем,
@@ -23,15 +24,15 @@ LOCAL_CONFIG="build/conf/local.conf"
 CONFIG_MACHINE="orange-pi-zero"
 TYPE_PACKAGE="deb"
 
-# версия "yocto-project" выбраная в качестве базовой, ветка sumo от 13 августа 2018
+# версия "yocto-project" выбраная в качестве базовой, ветка sumo от 5 сентября 2018
 GIT_YOCTO="git://git.yoctoproject.org/poky.git"
-REV_YOCTO="45ef387cc54a0584807e05a952e1e4681ec4c664"
+REV_YOCTO="51872d3f99e38f9d883ab0a8782ceecb41822fd0"
 
 
 DIR_ORANGEPI="meta-sunxi"
 GIT_ORANGEPI="https://github.com/linux-sunxi/$DIR_ORANGEPI"
 # перешел на ветку sumo от 10 июня 2018
-REV_ORANGEPI="df468d72d74b6af224060b78e4d5daf66c536cb6"
+REV_ORANGEPI="85cc70a3fab2a750773576fa2b6631fcabbf3fdd"
 
 
 
@@ -88,7 +89,3 @@ sed -i "s|MACHINE ??=.*|MACHINE ??= \"$CONFIG_MACHINE\"|" $LOCAL_CONFIG
 F="PACKAGE_CLASSES ?= \"package_rpm\""
 R="PACKAGE_CLASSES ?= \"package_$TYPE_PACKAGE\""
 sed -i "s|$F|$R|" $LOCAL_CONFIG
-
-# разрешаем использовать коммерческую лицензию для возможности сборки
-# некоторых библиотек, например libdav"
-echo "LICENSE_FLAGS_WHITELIST = \"commercial\"" >> $LOCAL_CONFIG
