@@ -25,7 +25,7 @@ EXTRA_USERS_PARAMS = "usermod -P ${ROOTPASSWORD} ${ROOTUSERNAME};"
 
 # стартовая заставка, которая выводиться во время загрузки,
 # в случае подключения кабеля HDMI к монитору или к телевизору
-###SPLASH = "psplash-raspberrypi"
+SPLASH = "psplash-berserk"
 
 
 
