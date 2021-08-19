@@ -47,14 +47,10 @@ ROUTER_GLIBC = " \
             glibc-thread-db \
             glibc-gconv-utf-16 \
             glibc-gconv-utf-32 \
-            glibc-gconv-koi8-r \
             glibc-gconv-cp1251 \
-            glibc-gconv-ibm866 \
             glibc-binary-localedata-en-us \
             glibc-binary-localedata-ru-ru \
-            glibc-binary-localedata-ru-ru.koi8-r \
             glibc-charmap-cp1251 \
-            glibc-charmap-koi8-r \
             glibc-charmap-utf-8 \
             "
 
