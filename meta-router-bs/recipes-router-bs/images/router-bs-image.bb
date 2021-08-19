@@ -9,6 +9,8 @@ MD5_MIT = "md5=3da9cfbcb788c80a0384361b4de20420"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;${MD5_LIC} \
                     file://${COREBASE}/meta/COPYING.MIT;${MD5_MIT}"
 
+IMAGE_FSTYPES = "rpi-sdimg"
+                    
 # добавление нескольких стандартных пакетов в базовый образ
 IMAGE_FEATURES += "ssh-server-openssh splash"
 
@@ -69,8 +71,7 @@ ROUTER_NET = "kernel-module-asix \
 # приложения входящие в образ
 ROUTER_SOFT = " \
         mc \
-        resolvconf \
-        dhcp-server \
+        kea \
         init-ifupdown \
         shorewall \
         shorewall-doc \
