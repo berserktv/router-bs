@@ -59,7 +59,6 @@ ROUTER_GLIBC = " \
 # базовые пакеты
 ROUTER_BASE = " \
            kernel-modules \
-           lsb \
            pciutils \
            "
 
