@@ -61,8 +61,8 @@ ROUTER_BASE = " \
            "
 
 # сетевые пакеты и модули ядра
-ROUTER_NET = "kernel-module-asix \
-             "
+ROUTER_NET = ""
+
 
 # приложения входящие в образ
 ROUTER_SOFT = " \
