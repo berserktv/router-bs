@@ -18,4 +18,6 @@ RDEPENDS_${PN} += "\
     perl-module-list-util \
     perl-module-socket \
     perl-module-overloading \
+    perl-module-file-spec \
+    perl-module-symbol \
 "
