@@ -12,10 +12,13 @@ S = "${WORKDIR}/${PN}-${PV}${SUB_PR}"
 
 # запуск стартового скрипта /etc/init.d/shorewall на определенном уровне исполнения
 # последовательность запуска, перед сервисом ssh и dhcp
-inherit update-rc.d
-INITSCRIPT_NAME = "shorewall"
-INITSCRIPT_PARAMS = "start 08 2 3 4 5 . stop 92 0 6 1 ."
+###inherit update-rc.d
+###INITSCRIPT_NAME = "shorewall"
+###INITSCRIPT_PARAMS = "start 08 2 3 4 5 . stop 92 0 6 1 ."
 
+inherit systemd
+SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_SERVICE_${PN} = "shorewall.service"
 
 PR = "${INC_PR}.0"
 SRC_URI = "\
@@ -27,7 +30,10 @@ SRC_URI = "\
     file://rules \
     file://routestopped \
     file://shorewall.conf \
+    file://systemd/shorewall.service \
+    file://systemd/etc-default-shorewall \
     "
+
 
 # отключаю секцию do_compile, так как /sbin/shorewall является исполняемым скриптом
 # и не требует компиляции
@@ -38,6 +44,7 @@ SRC_URI[sha256sum] = "1f95a04af2cbdd3449aa6fb26ea1b001e7cccd1ad4ed6d7ed8648247ae
 
 
 do_install_append () {
+
     install -m 0644 ${WORKDIR}/zones ${D}${sysconfdir}/shorewall/zones
     install -m 0644 ${WORKDIR}/interfaces ${D}${sysconfdir}/shorewall/interfaces
     install -m 0644 ${WORKDIR}/policy ${D}${sysconfdir}/shorewall/policy
@@ -49,4 +56,10 @@ do_install_append () {
     # дополнительно устанавливаю примеры конфигураций брандмауэра
     install -d ${D}${docdir}/shorewall/examples
     cp -R ${S}/Samples/* ${D}${docdir}/shorewall/examples/
+
+    # файлы для запуска сервиса под управлением systemd
+    install -d ${D}${systemd_unitdir}/system
+    install -d ${D}${sysconfdir}/default
+    install -m 0644 ${WORKDIR}/systemd/etc-default-shorewall ${D}${sysconfdir}/default/shorewall
+    install -m 0644 ${WORKDIR}/systemd/shorewall.service ${D}${systemd_unitdir}/system
 }
