@@ -57,7 +57,7 @@ ROUTER_BASE = " \
            "
 
 # сетевые пакеты и модули ядра
-ROUTER_NET = ""
+ROUTER_NET = "openssh-sftp-server"
 
 
 # приложения входящие в образ
