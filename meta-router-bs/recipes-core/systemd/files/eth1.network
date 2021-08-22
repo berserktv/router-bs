@@ -1,0 +1,8 @@
+[Match]
+Name=eth1
+
+[Network]
+Address=10.0.8.1/24
+###Gateway=
+# ip address DNS servers - OpenDNS Family Shield
+DNS=208.67.222.123 208.67.220.123
