@@ -3,11 +3,8 @@
 # autor Alexander Demachev, site berserk.tv
 DESCRIPTION = "The Router BS -  is a simple image to Raspberry PI platform"
 LICENSE = "MIT"
-MD5_LIC = "md5=4d92cd373abda3937c2bc47fbc49d690"
-MD5_MIT = "md5=3da9cfbcb788c80a0384361b4de20420"
-
-LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;${MD5_LIC} \
-                    file://${COREBASE}/meta/COPYING.MIT;${MD5_MIT}"
+MD5_SUM = "md5=0835ade698e0bcf8506ecda2f7b4f302"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;${MD5_SUM}"
 
 IMAGE_FSTYPES = "rpi-sdimg"
                     
@@ -84,6 +81,26 @@ IMAGE_INSTALL += " \
 #    ${ROUTER_DEBUG_TOOLS} \
 #
 
+SHOREWALL_LIST = "\
+  shorewall/zones \
+  shorewall/interfaces \
+  shorewall/policy \
+  shorewall/masq \
+  shorewall/rules \
+  shorewall/routestopped \
+  shorewall/shorewall.conf \
+"
 
+KEA_LIST = "kea/kea-dhcp4.conf"
 
-    
+ROOTFS_POSTPROCESS_COMMAND += "add_config_git_local;"
+# добавление используемых конфигурационных файлов в локальную .git базу
+# для удобства отслеживания изменений
+add_config_git_local() {
+    cd ${IMAGE_ROOTFS}/etc
+    git init
+    git add ${SHOREWALL_LIST}
+    git add ${KEA_LIST}
+    git commit -a -m "add shorewall config"
+    echo "*" >> .git/.gitignore
+}
