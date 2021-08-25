@@ -1,4 +1,4 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI += "file://psplash-berserk-img.h"
 
-SPLASH_IMAGES = "file://psplash-berserk-img.h;outsuffix=berserk"
+SPLASH_IMAGES_append = "file://psplash-berserk-img.h;outsuffix=berserk"
