@@ -1,0 +1,1 @@
+../kate/client.sh
