@@ -1,6 +1,6 @@
 LICENSE = "GPL"
-LIC_F = "file://${COREBASE}/meta/files/common-licenses/GPL-1.0"
-SUM_F = "md5=e9e36a9de734199567a4d769498f743d"
+LIC_F = "file://${COREBASE}/meta/files/common-licenses/GPL-1.0-or-later"
+SUM_F = "md5=30c0b8a5048cc2f4be5ff15ef0d8cf61"
 LIC_FILES_CHKSUM = "${LIC_F};${SUM_F}"
 
 SUB_PR = ".3"
