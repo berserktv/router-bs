@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
-# Подключение к шлюзу для изменения конфигурации:
-# аргументы скрипта
-# arg1 - указание адреса шлюза
-if [ -z "$1" ]; then
-    echo "not arg1 => gateway ip address is not set, exit ..."
-    exit 1
-fi
+# Подключение к шлюзу по протоколу sshfs для изменения конфигурации:
+# Удаленная конфигурация шлюза (каталог /etc) монтируется в локальную файловую систему
+# и открывается в удобном текстовом редакторе Visual Studio Code или Kate
+# (в зависимости от каталога из которого запущен скрипт client.sh)
 
-CONF_DIR="tmp_etc"
-IP_GATEWAY="$1"
+# общие переменные скрипта
+source ../config.txt
+
+# аргументы скрипта
+# arg1 - первым аргументом можно задать адрес шлюза, иначе берется из config.txt
+if [ -n "$1" ]; then
+    IP_GATEWAY="$1"
+fi
 
 CUR_DIR=`pwd`
 CUR=`basename ${CUR_DIR}`
@@ -19,8 +22,8 @@ test -d ${CONF_DIR} || mkdir ${CONF_DIR}
 echo "sshfs root@${IP_GATEWAY}:/etc ${CONF_DIR}"
 sshfs root@${IP_GATEWAY}:/etc ${CONF_DIR}
 
-# 2) Запуск программ для редактирования конфигурации в редакторе kate или visual studio code
-#    структуру можно посмотреть во вкладке Проекты (см. ${CONF_DIR}/.git)
+# 2) Запуск программ для редактирования конфигурации в редакторе kate или visual studio code,
+#    в Kate структуру можно посмотреть во вкладке Проекты (см. ${CONF_DIR}/.git)
 if [ "${CUR}" == "kate" ] ; then kate ${CONF_DIR}/shorewall/shorewall.conf & fi
 if [ "${CUR}" == "vscode" ] ; then code ${CONF_DIR}/shorewall & fi
 
