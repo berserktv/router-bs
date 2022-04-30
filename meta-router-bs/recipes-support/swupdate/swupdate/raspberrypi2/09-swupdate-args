@@ -7,7 +7,7 @@ else
 fi
 
 state=`fw_printenv ustate | cut -f 2 -d'='`
-if [ $state == 1 ];then
+if [ "$state" == "1" ];then
 	SWUPDATE_SURICATTA_ARGS="-c 2"
 else
 	SWUPDATE_SURICATTA_ARGS=" "
