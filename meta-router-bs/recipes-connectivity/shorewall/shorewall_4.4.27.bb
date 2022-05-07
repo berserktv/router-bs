@@ -1,5 +1,5 @@
 LICENSE = "GPL"
-LIC_F = "file://${COREBASE}/meta/files/common-licenses/GPL-1.0"
+LIC_F = "file://${COREBASE}/meta/files/common-licenses/GPL-1.0-only"
 SUM_F = "md5=e9e36a9de734199567a4d769498f743d"
 LIC_FILES_CHKSUM = "${LIC_F};${SUM_F}"
 
