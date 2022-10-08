@@ -9,4 +9,5 @@ IMAGE_INSTALL += " \
                   libubootenv-bin \
                   swupdate \
                   swupdate-www \
+                  etc-overlay \
                  "
