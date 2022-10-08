@@ -7,6 +7,7 @@
 #	rootdev=mmcblk1p2
 #fi
 
+saveenv
 if env exists opipart;then echo Booting from mmcblk0p${opipart};else setenv opipart 2;echo opipart not set, default to ${opipart};fi
 
 setenv bootargs console=${console} console=tty1 root=/dev/mmcblk0p${opipart} rootwait panic=10 ${extra}
