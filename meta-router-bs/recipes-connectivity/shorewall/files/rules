@@ -42,4 +42,7 @@ Ping(DROP)	net		$FW
 
 ACCEPT		$FW		loc		icmp
 ACCEPT		$FW		net		icmp
+
+# enabling the Web Server SWUpdate
+ACCEPT		loc		$FW tcp 8080
 #
